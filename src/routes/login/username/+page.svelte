@@ -26,7 +26,30 @@
 
   }
 
-  async function confirmUsername() {}
+  async function confirmUsername() {
+    console.log("confirming username", username, "...")
+    const batch = writeBatch(db);
+    batch.set(doc(db, "usernames", username), { uid: $user?.uid });
+    batch.set(doc(db, "users", $user!.uid), {
+      username,
+      photoURL: $user?.photoURL ?? null,
+      published: true,
+      bio: 'I love Svelte!',
+      links: [
+        {
+          title: 'Test Link',
+          url: 'google.com',
+          icon: 'custom'
+        }
+      ]
+    });
+
+    await batch.commit();
+
+    username = '';
+    isAvailable = false;
+
+  }
 
 </script>
 
