@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { auth } from '$lib/firebase';
+    import { auth, user } from '$lib/firebase';
 
     import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
 
@@ -8,9 +8,14 @@
         const user = await signInWithPopup(auth, provider);
         console.log(user)
     }
-
 </script>
-
 <h2>Login</h2>
 
+{#if $user}
+    <h2 class="font-bold text-2xl">Welcome, <span class="text-accent">{$user.displayName}</span></h2>
+    <p>You are logged in!</p>
+    <button class="btn btn-secondary" on:click={() => signOut(auth)}>Sign Out</button>
+
+{:else}
 <button class="btn btn-primary" on:click={signInWithGoogle}>Sign in with Google!</button>
+{/if}
