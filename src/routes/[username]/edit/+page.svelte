@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from "$app/stores";
+    import SortableList from "$lib/components/SortableList.svelte";
     import UserLink from "$lib/components/UserLink.svelte";
     import { db, userData, user } from "$lib/firebase";
     import {
@@ -33,6 +34,12 @@
     $: urlIsValid = $formData.url.match(/^(ftp|http|https):\/\/[^ "]+$/);
     $: titleIsValid = $formData.title.length < 20 && $formData.title.length > 0;
     $: formIsValid = urlIsValid && titleIsValid;
+
+    function sortList(e: CustomEvent) {
+      const newList = e.detail;
+      const userRef = doc(db, "users", $user!.uid);
+      setDoc(userRef, { links: newList }, { merge: true })
+    }
 
   
     async function addLink(e: SubmitEvent) {
@@ -75,7 +82,16 @@
         Edit your Profile
       </h1>
 
-      <!-- INSERT sortable list here -->
+      <SortableList
+        list={$userData?.links}
+        on:sort={sortList}
+        let:item
+      >
+
+      <div class="group relative">
+        <UserLink {...item} />
+      </div>
+      </SortableList>
 
       {#if showForm}
         <form
