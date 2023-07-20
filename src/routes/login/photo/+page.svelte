@@ -3,7 +3,7 @@
   import { user, userData, storage, db } from "$lib/firebase";
   import { doc, updateDoc } from "firebase/firestore";
   import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-  import defUserPng from './user.png'
+  import defUserPng from '../../../assets/images/user.png'
 
   let previewURL: string;
   let uploading = false;
