@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { PageData } from './$types';
-    import defUserPng from '../../assets/images/user.png'
+    import UserLink from '$lib/components/UserLink.svelte';
     
     export let data: PageData;
 </script>
@@ -11,21 +11,23 @@
 </svelte:head>
 
 <main class="prose text-center mx-auto mt-8">
-    <h1 class="text-7xl text-purple-500">
+    <h1 class="text-7xl text-purple-500 font-bold mb-3">
         @{data.username}
     </h1>
 
     <img
-        src={data.photoURL ?? defUserPng}
+        src={data.photoURL ?? 'user.png'}
         alt="photoURL"
         width="256"
         class="mx-auto rounded-full"
     />
 
     <p class="text-xl my-8">{data.bio ?? "no bio yet..."}</p>
-    <ul class="list-none">
+    <ul class="list-none mx-auto w-full flex flex-col items-center">
         {#each data.links as item}
-            {@debug item}
+            <li class="my-2 sm:w-1/3 w-full">
+                <UserLink {...item} />
+            </li>
         {/each}
     </ul>
 
