@@ -3,6 +3,7 @@
   import { user, userData, storage, db } from "$lib/firebase";
   import { doc, updateDoc } from "firebase/firestore";
   import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+  import defUserPng from './user.png'
 
   let previewURL: string;
   let uploading = false;
@@ -27,11 +28,11 @@
   <form class="max-w-screen-md w-full">
     <div class="form-control w-full max-w-xs my-10 mx-auto text-center">
       <img
-        src={previewURL ?? $userData?.photoURL ?? "/user.png"}
+        src={previewURL ?? $userData?.photoURL ?? defUserPng}
         alt="photoURL"
         width="256"
         height="256"
-        class="mx-auto"
+        class="mx-auto rounded-full"
       />
       <label for="photoURL" class="label">
         <span class="label-text">Pick a file</span>
