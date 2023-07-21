@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { PageData } from './$types';
     import UserLink from '$lib/components/UserLink.svelte';
-    import { user } from '$lib/firebase';
+    import { user, userData } from '$lib/firebase';
     
     export let data: PageData;
 </script>
@@ -33,7 +33,7 @@
     </ul>
 
     {#if $user}
-        <a href="/edit" class="btn btn-secondary mt-5">Edit Profile</a>
+        <a href={`${$userData?.username}/edit`} class="btn btn-secondary mt-5">Edit Profile</a>
     {/if}
 
 </main>

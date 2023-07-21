@@ -76,11 +76,13 @@
   
 </script>
   
-  <main class="max-w-xl mx-auto">
+  <main class="max-w-xl mx-auto flex flex-col items-center">
     {#if $userData?.username == $page.params.username}
       <h1 class="mx-2 text-2xl font-bold mt-8 mb-4 text-center">
         Edit your Profile
       </h1>
+      <a href={`/${$page.params.username}/bio`} class="btn btn-secondary mb-3">Edit your bio</a>
+      <a href="/login/photo" class="btn btn-primary mb-5">Edit your photo</a>
 
       <SortableList
         list={$userData?.links}
