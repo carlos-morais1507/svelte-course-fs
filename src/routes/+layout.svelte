@@ -13,7 +13,7 @@
     await signOut(auth);
   }
 </script>
-  <nav class="navbar">
+  <nav class="navbar fixed bg-base-100 z-50">
     <div class="flex-1">
       <a href="/" class="btn btn-ghost normal-case text-xl font-bold">FKit 🔥🌳</a>
     </div>
@@ -26,4 +26,12 @@
       {/if}
     </div>
   </nav>
+
 <slot/>
+
+<footer class="footer sm:p-10 p-5 bg-neutral text-neutral-content fixed bottom-0 z-50">
+  <div>
+    <h2>Desenvolvido com 💜 por Carlos Morais 👾</h2>
+    <a href="https://cmorais.dev.br" class="link link-hover" target="_blank">Website</a>
+  </div>
+</footer>

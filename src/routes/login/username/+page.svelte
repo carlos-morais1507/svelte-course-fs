@@ -63,7 +63,7 @@
  {:else}
 <AuthCheck>
   <h2>Username</h2>
-  <form class="w-2/5" on:submit|preventDefault={confirmUsername}>
+  <form class="sm:w-2/5 w-full flex flex-col justify-center" on:submit|preventDefault={confirmUsername}>
     <input
       type="text"
       placeholder="Username"

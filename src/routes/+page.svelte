@@ -3,7 +3,7 @@
 
 
 </script>
-<main class="p-24 flex flex-col items-center">
+<main class="p-24 flex flex-col items-center min-h-[90vh]">
   <h1 class="text-5xl font-bold text-accent">My FKit LinkTree 🔥🌳</h1>
   <div>
     <a href="/login" class="btn btn-primary mt-5">Sign in</a>

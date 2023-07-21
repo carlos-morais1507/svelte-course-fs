@@ -2,6 +2,7 @@
     import type { PageData } from './$types';
     import UserLink from '$lib/components/UserLink.svelte';
     import { user, userData } from '$lib/firebase';
+  import { page } from '$app/stores';
     
     export let data: PageData;
 </script>
@@ -11,7 +12,7 @@
     <meta name="description" content={data.bio} />
 </svelte:head>
 
-<main class="prose text-center flex flex-col justify-center items-center mt-8">
+<main class="prose text-center flex flex-col justify-center items-center min-h-screen mb-24">
     <h1 class="text-7xl text-purple-500 font-bold mb-3">
         @{data.username}
     </h1>
@@ -32,7 +33,7 @@
         {/each}
     </ul>
 
-    {#if $user}
+    {#if $user && $userData?.username == $page.params.username}
         <a href={`${$userData?.username}/edit`} class="btn btn-secondary mt-5">Edit Profile</a>
     {/if}
 
