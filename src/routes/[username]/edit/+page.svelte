@@ -89,7 +89,10 @@
       >
 
       <div class="group relative">
-        <UserLink {...item} />
+        <div class="indicator group">
+          <button on:click={() => deleteLink(item)} class="opacity-0 group-hover:opacity-100 indicator-item badge badge-error btn btn-error btn-xs">DELETE</button>
+          <UserLink {...item} />
+        </div>
       </div>
       </SortableList>
 

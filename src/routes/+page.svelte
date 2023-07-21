@@ -1,3 +1,14 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<button class="btn">Oi</button>
+<script lang="ts">
+  import { user, userData } from "$lib/firebase";
+
+
+</script>
+<main class="p-24 flex flex-col items-center">
+  <h1 class="text-5xl font-bold text-accent">My FKit LinkTree 🔥🌳</h1>
+  <div>
+    <a href="/login" class="btn btn-primary mt-5">Sign in</a>
+    {#if $user}
+      <a href={`/${$userData?.username}/edit`} class="btn btn-secondary ml-3">Edit Profile</a>
+    {/if}
+  </div>
+</main>
